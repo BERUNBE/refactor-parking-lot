@@ -1,14 +1,14 @@
 Parking Lot Refactor
 ---------------------
 
-#### Code Smells:
-#####TEST 
+### Code Smells:
+#### TEST 
 - 	ParkingBoyFacts.java
 	
 	1. Repeating strings instead of using constant
 	2. Unused imports
 
-#####MAIN 
+#### MAIN 
 - 	ParkingBoy.java, SmartParkingBoy.java, SuperSmartParkingBoy.java
 	
 	1. Repeating strings instead of using constant
