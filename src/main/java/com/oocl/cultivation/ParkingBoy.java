@@ -17,6 +17,14 @@ public class ParkingBoy {
         return parkingLotList;
     }
 
+    public String getLastErrorMessage() {
+        return lastErrorMessage;
+    }
+
+    public void setLastErrorMessage(String lastErrorMessage) {
+        this.lastErrorMessage = lastErrorMessage;
+    }
+
     public ParkingTicket park(Car car) {
         ParkingLot parkingLot = getFirstParkingLotWithAvailablePosition();
 
@@ -44,10 +52,7 @@ public class ParkingBoy {
             setLastErrorMessage(UNRECOGNIZED_PARKING_TICKET);
             return null;
         }
-        ParkingLot parkingLot = parkingLotList.stream()
-                .filter(aParkingLot -> aParkingLot.getCars().containsKey(ticket))
-                .findFirst()
-                .get();
+        ParkingLot parkingLot = getParkingLotFromListByTicket(ticket);
         Car car = parkingLot.getCars().get(ticket);
         parkingLot.removeCarWithTicket(ticket);
         return car;
@@ -58,11 +63,10 @@ public class ParkingBoy {
                 .anyMatch(aParkingLot -> aParkingLot.getCars().containsKey(ticket));
     }
 
-    public String getLastErrorMessage() {
-        return lastErrorMessage;
-    }
-
-    public void setLastErrorMessage(String lastErrorMessage) {
-        this.lastErrorMessage = lastErrorMessage;
+    private ParkingLot getParkingLotFromListByTicket(ParkingTicket ticket) {
+        return parkingLotList.stream()
+                .filter(aParkingLot -> aParkingLot.getCars().containsKey(ticket))
+                .findFirst()
+                .get();
     }
 }
