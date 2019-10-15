@@ -2,6 +2,8 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
+import static com.oocl.cultivation.ParkingBoyConstants.*;
+
 public class ParkingBoy {
 
     private final List<ParkingLot> parkingLotList;
@@ -22,17 +24,17 @@ public class ParkingBoy {
                 return parkingLot.addCar(car);
             }
         }
-        setLastErrorMessage("Not enough position.");
+        setLastErrorMessage(NOT_ENOUGH_POSITION);
         return null;
     }
 
     public Car fetch(ParkingTicket ticket) {
         if (ticket == null) {
-            setLastErrorMessage("Please provide your parking ticket.");
+            setLastErrorMessage(PLEASE_PROVIDE_YOUR_PARKING_TICKET);
             return null;
         }
         if (!isTicketFoundInAnyParkingLot(ticket)) {
-            setLastErrorMessage("Unrecognized parking ticket.");
+            setLastErrorMessage(UNRECOGNIZED_PARKING_TICKET);
             return null;
         }
         ParkingLot parkingLot = parkingLotList.stream()

@@ -4,6 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
+import static com.oocl.cultivation.ParkingBoyConstants.NOT_ENOUGH_POSITION;
+
 public class SuperSmartParkingBoy extends ParkingBoy{
 
     public SuperSmartParkingBoy(List<ParkingLot> parkingLotList) {
@@ -18,7 +20,7 @@ public class SuperSmartParkingBoy extends ParkingBoy{
                 .orElse(null);
 
         if (parkingLot == null) {
-            setLastErrorMessage("Not enough position.");
+            setLastErrorMessage(NOT_ENOUGH_POSITION);
             return null;
         }
 

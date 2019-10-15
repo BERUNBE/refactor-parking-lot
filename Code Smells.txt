@@ -1,2 +1,6 @@
 TEST - ParkingBoyFacts.java
 	1. Repeating strings instead of using constant
+	2. Unused imports
+
+MAIN - ParkingBoy.java, SmartParkingBoy.java, SuperSmartParkingBoy.java
+	1. Repeating strings instead of using constant
