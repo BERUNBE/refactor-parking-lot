@@ -3,18 +3,15 @@ package com.oocl.cultivation.test;
 import com.oocl.cultivation.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
+
+    private static final String UNRECOGNIZED_PARKING_TICKET = "Unrecognized parking ticket.";
+    private static final String PLEASE_PROVIDE_YOUR_PARKING_TICKET = "Please provide your parking ticket.";
+    private static final String NOT_ENOUGH_POSITION = "Not enough position.";
 
     @Test
     void parking_boy_should_park_car_into_the_parking_lot_and_return_ticket() {
@@ -108,7 +105,7 @@ class ParkingBoyFacts {
         Car fetchedCar = utusan.fetch(new ParkingTicket());
 
         assertThat(fetchedCar, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Unrecognized parking ticket."));
+        assertThat(utusan.getLastErrorMessage(), is(UNRECOGNIZED_PARKING_TICKET));
     }
 
     @Test
@@ -119,7 +116,7 @@ class ParkingBoyFacts {
         Car fetchedCar = utusan.fetch(null);
 
         assertThat(fetchedCar, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Please provide your parking ticket."));
+        assertThat(utusan.getLastErrorMessage(), is(PLEASE_PROVIDE_YOUR_PARKING_TICKET));
     }
 
     @Test
@@ -132,7 +129,7 @@ class ParkingBoyFacts {
         ParkingTicket ticket = utusan.park(new Car());
 
         assertThat(ticket, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Not enough position."));
+        assertThat(utusan.getLastErrorMessage(), is(NOT_ENOUGH_POSITION));
     }
 
     @Test
@@ -256,7 +253,7 @@ class ParkingBoyFacts {
         Car fetchedCar = utusan.fetch(new ParkingTicket());
 
         assertThat(fetchedCar, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Unrecognized parking ticket."));
+        assertThat(utusan.getLastErrorMessage(), is(UNRECOGNIZED_PARKING_TICKET));
     }
 
     @Test
@@ -267,7 +264,7 @@ class ParkingBoyFacts {
         Car fetchedCar = utusan.fetch(null);
 
         assertThat(fetchedCar, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Please provide your parking ticket."));
+        assertThat(utusan.getLastErrorMessage(), is(PLEASE_PROVIDE_YOUR_PARKING_TICKET));
     }
 
     @Test
@@ -280,7 +277,7 @@ class ParkingBoyFacts {
         ParkingTicket ticket = utusan.park(new Car());
 
         assertThat(ticket, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Not enough position."));
+        assertThat(utusan.getLastErrorMessage(), is(NOT_ENOUGH_POSITION));
     }
 
     @Test
@@ -390,7 +387,7 @@ class ParkingBoyFacts {
         Car fetchedCar = utusan.fetch(new ParkingTicket());
 
         assertThat(fetchedCar, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Unrecognized parking ticket."));
+        assertThat(utusan.getLastErrorMessage(), is(UNRECOGNIZED_PARKING_TICKET));
     }
 
     @Test
@@ -401,7 +398,7 @@ class ParkingBoyFacts {
         Car fetchedCar = utusan.fetch(null);
 
         assertThat(fetchedCar, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Please provide your parking ticket."));
+        assertThat(utusan.getLastErrorMessage(), is(PLEASE_PROVIDE_YOUR_PARKING_TICKET));
     }
 
     @Test
@@ -414,7 +411,7 @@ class ParkingBoyFacts {
         ParkingTicket ticket = utusan.park(new Car());
 
         assertThat(ticket, is(nullValue()));
-        assertThat(utusan.getLastErrorMessage(), is("Not enough position."));
+        assertThat(utusan.getLastErrorMessage(), is(NOT_ENOUGH_POSITION));
     }
 
     private void addNumberOfCarsInParkingLot(int numberOfCars, ParkingLot parkingLot) {
