@@ -18,14 +18,17 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        for(int i = 0; i < parkingLotList.size(); i++) {
-            ParkingLot parkingLot = parkingLotList.get(i);
-            if (parkingLot.getAvailableParkingPosition() > 0){
-                return parkingLot.addCar(car);
-            }
+        ParkingLot parkingLot = getParkingLotList().stream()
+                .filter(aParkingLot -> aParkingLot.getAvailableParkingPosition() > 0)
+                .findFirst()
+                .orElse(null);
+
+        if (parkingLot == null) {
+            setLastErrorMessage(NOT_ENOUGH_POSITION);
+            return null;
         }
-        setLastErrorMessage(NOT_ENOUGH_POSITION);
-        return null;
+
+        return parkingLot.addCar(car);
     }
 
     public Car fetch(ParkingTicket ticket) {
