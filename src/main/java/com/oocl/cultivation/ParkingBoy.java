@@ -2,7 +2,7 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
-import static com.oocl.cultivation.ParkingBoyConstants.*;
+import static com.oocl.cultivation.ErrorMessageConstants.*;
 
 public class ParkingBoy {
 
