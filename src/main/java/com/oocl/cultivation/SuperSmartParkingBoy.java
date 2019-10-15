@@ -14,10 +14,7 @@ public class SuperSmartParkingBoy extends ParkingBoy{
 
     @Override
     public ParkingTicket park(Car car) {
-        ParkingLot parkingLot = getParkingLotList().stream()
-                .filter(aParkingLot -> aParkingLot.getAvailableParkingPosition() > 0)
-                .max(Comparator.comparing(getParkingLotAvailablePositionRate()))
-                .orElse(null);
+        ParkingLot parkingLot = getParkingLotWithMostAvailablePositionRate();
 
         if (parkingLot == null) {
             setLastErrorMessage(NOT_ENOUGH_POSITION);
@@ -25,6 +22,13 @@ public class SuperSmartParkingBoy extends ParkingBoy{
         }
 
         return parkingLot.addCar(car);
+    }
+
+    private ParkingLot getParkingLotWithMostAvailablePositionRate() {
+        return getParkingLotList().stream()
+                .filter(aParkingLot -> aParkingLot.getAvailableParkingPosition() > 0)
+                .max(Comparator.comparing(getParkingLotAvailablePositionRate()))
+                .orElse(null);
     }
 
     private Function<ParkingLot, Integer> getParkingLotAvailablePositionRate() {

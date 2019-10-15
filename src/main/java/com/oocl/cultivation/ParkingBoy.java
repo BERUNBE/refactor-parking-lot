@@ -18,10 +18,7 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingLot parkingLot = getParkingLotList().stream()
-                .filter(aParkingLot -> aParkingLot.getAvailableParkingPosition() > 0)
-                .findFirst()
-                .orElse(null);
+        ParkingLot parkingLot = getFirstParkingLotWithAvailablePosition();
 
         if (parkingLot == null) {
             setLastErrorMessage(NOT_ENOUGH_POSITION);
@@ -29,6 +26,13 @@ public class ParkingBoy {
         }
 
         return parkingLot.addCar(car);
+    }
+
+    private ParkingLot getFirstParkingLotWithAvailablePosition() {
+        return getParkingLotList().stream()
+                .filter(aParkingLot -> aParkingLot.getAvailableParkingPosition() > 0)
+                .findFirst()
+                .orElse(null);
     }
 
     public Car fetch(ParkingTicket ticket) {
