@@ -4,8 +4,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
-import static com.oocl.cultivation.ErrorMessageConstants.NOT_ENOUGH_POSITION;
-
 public class SuperSmartParkingBoy extends ParkingBoy{
 
     public SuperSmartParkingBoy(List<ParkingLot> parkingLotList) {
